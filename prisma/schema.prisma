@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Landlord {
+  id          String   @id @default(cuid())
+  name        String
+  address     String
+  city        String
+  state       String
+  zipCode     String
+  phone       String?
+  email       String?
+  website     String?
+  description String?
+  claimedBy   String?  // Stack Auth user ID
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  reviews     Review[]
+  
+  @@map("landlords")
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  landlordId  String
+  userId      String   // Stack Auth user ID
+  rating      Int      // 1-5 stars
+  title       String
+  content     String
+  anonymous   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  landlord    Landlord @relation(fields: [landlordId], references: [id], onDelete: Cascade)
+  reports     Report[]
+  
+  @@map("reviews")
+}
+
+model Report {
+  id        String      @id @default(cuid())
+  reviewId  String
+  reporterId String     // Stack Auth user ID
+  reason    String
+  details   String?
+  status    ReportStatus @default(PENDING)
+  createdAt DateTime    @default(now())
+  
+  review    Review      @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  
+  @@map("reports")
+}
+
+enum ReportStatus {
+  PENDING
+  REVIEWED
+  RESOLVED
+  DISMISSED
+}
