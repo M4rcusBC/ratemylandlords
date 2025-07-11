@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { StackProvider } from '@stackframe/stack'
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "../stack";
 import { stackClientApp } from '@/lib/stack'
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import { CookieConsentProvider } from '@/components/CookieConsent'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,10 +19,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <StackProvider app={stackClientApp}>
-          <Navigation />
-          {children}
+      <body className="antialiased flex flex-col min-h-screen">
+        <StackProvider app={stackServerApp}>
+          <StackTheme>
+            <StackProvider app={stackClientApp}>
+              <CookieConsentProvider>
+                <Navigation />
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <Footer />
+              </CookieConsentProvider>
+            </StackProvider>
+          </StackTheme>
         </StackProvider>
       </body>
     </html>
