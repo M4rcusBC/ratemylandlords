@@ -5,6 +5,7 @@ import { stackClientApp } from '@/lib/stack'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { CookieConsentProvider } from '@/components/CookieConsent'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,21 +19,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="transition-colors duration-300">
       <body className="antialiased flex flex-col min-h-screen">
-        <StackProvider app={stackServerApp}>
-          <StackTheme>
-            <StackProvider app={stackClientApp}>
-              <CookieConsentProvider>
-                <Navigation />
-                <main className="flex-grow">
-                  {children}
-                </main>
-                <Footer />
-              </CookieConsentProvider>
-            </StackProvider>
-          </StackTheme>
-        </StackProvider>
+        <ThemeProvider>
+          <StackProvider app={stackServerApp}>
+            <StackTheme>
+              <StackProvider app={stackClientApp}>
+                <CookieConsentProvider>
+                  <Navigation />
+                  <main className="flex-grow">
+                    {children}
+                  </main>
+                  <Footer />
+                </CookieConsentProvider>
+              </StackProvider>
+            </StackTheme>
+          </StackProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

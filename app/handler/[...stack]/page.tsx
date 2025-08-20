@@ -7,5 +7,5 @@ interface HandlerProps {
 }
 
 export default function Handler(props: HandlerProps) {
-  return <StackHandler fullPage app={stackServerApp} {...props} />;
+  return <StackHandler fullPage app={stackServerApp} routeProps={props} />;
 }
