@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { Search, Star, MapPin, Building } from 'lucide-react'
 
@@ -26,11 +26,7 @@ export default function LandlordsPage() {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
 
-  useEffect(() => {
-    fetchLandlords()
-  }, [search, city, state])
-
-  const fetchLandlords = async () => {
+  const fetchLandlords = useCallback(async () => {
     setLoading(true)
     try {
       const params = new URLSearchParams()
@@ -46,7 +42,11 @@ export default function LandlordsPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [search, city, state])
+
+  useEffect(() => {
+    fetchLandlords()
+  }, [fetchLandlords])
 
   const renderStars = (rating: number) => {
     return (

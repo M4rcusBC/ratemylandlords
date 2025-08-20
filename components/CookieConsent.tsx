@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useEffect, createContext, useContext } from 'react'
-import { X, Cookie, Shield, Eye, Info, ExternalLink, UserCheck, AlertCircle } from 'lucide-react'
-import Link from 'next/link'
+import { X, Cookie, Shield, Eye, Info, UserCheck, AlertCircle } from 'lucide-react'
 import { 
   getCookieConsentData, 
   setCookieConsentData, 
@@ -423,7 +422,7 @@ function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyModalProps) {
 
 // Component to show cookie settings in footer or settings page
 export function CookieSettings() {
-  const { hasConsented, reopenModal } = useCookieConsent()
+  const { reopenModal } = useCookieConsent()
   
   return (
     <button
