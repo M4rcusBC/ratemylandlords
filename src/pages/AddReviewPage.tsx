@@ -47,11 +47,6 @@ export const AddReviewPage: React.FC = () => {
 
   useEffect(() => {
     if (!id) return;
-
-    if (!turnstileToken) {
-      setError('Please complete the security check.');
-      return;
-    }
     fetchLandlordProfile(id)
       .then((data) => setLandlord(data))
       .catch(() => setLandlord(null))
@@ -222,7 +217,7 @@ export const AddReviewPage: React.FC = () => {
             />
             <p className="text-[11px] text-stone-400">
               Minimum 10 characters. Avoid including personally identifiable information
-              such as phone numbers or private addresses.
+              such as phone numbers or private addresses. Do not share specific experiences that could be traced back to you.
             </p>
           </div>
 
@@ -235,24 +230,48 @@ export const AddReviewPage: React.FC = () => {
               Select tags that describe your experience:
             </p>
             <div className="flex flex-wrap gap-2">
-              {PRESET_REVIEW_TAGS.map((tag) => {
-                const isSelected = selectedTags.includes(tag);
-                return (
-                  <button
-                    key={tag}
-                    type="button"
-                    onClick={() => toggleTag(tag)}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border transition-all ${
-                      isSelected
-                        ? 'bg-[#27695c] text-white border-[#27695c] shadow-xs'
-                        : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'
-                    }`}
-                  >
-                    {isSelected && <Check size={12} />}
-                    <span>{tag}</span>
-                  </button>
-                );
-              })}
+              {(() => {
+                let tagsToDisplay = PRESET_REVIEW_TAGS as readonly string[];
+                if (rating >= 4) {
+                  tagsToDisplay = [
+                    'Responsive', 'Fair Deposit Return', 'Maintains Property',
+                    'Clear Communication', 'Respectful', 'Transparent Fees',
+                    'Quick Repairs', 'Quiet Building', 'Pet Friendly', 'Easy Move-in'
+                  ];
+                } else if (rating > 0 && rating <= 2) {
+                  tagsToDisplay = [
+                    'Unresponsive', 'Kept Deposit Unfairly', 'Poor Maintenance',
+                    'Poor Communication', 'Disrespectful', 'Hidden Fees',
+                    'Slow Repairs', 'Noisy Building', 'Pests/Bugs', 'Difficult Move-out'
+                  ];
+                } else if (rating === 3) {
+                  tagsToDisplay = [
+                    'Average Maintenance', 'Fair Deposit Return', 'Hidden Fees',
+                    'Okay Communication', 'Slow Repairs', 'Noisy Building',
+                    'Quiet Building', 'Strict Rules'
+                  ];
+                }
+                const allTagsToDisplay = Array.from(new Set([...tagsToDisplay, ...selectedTags]));
+                
+                return allTagsToDisplay.map((tag) => {
+                  const isSelected = selectedTags.includes(tag);
+                  return (
+                    <button
+                      key={tag}
+                      type="button"
+                      onClick={() => toggleTag(tag)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border transition-all ${
+                        isSelected
+                          ? 'bg-[#27695c] text-white border-[#27695c] shadow-xs'
+                          : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'
+                      }`}
+                    >
+                      {isSelected && <Check size={12} />}
+                      <span>{tag}</span>
+                    </button>
+                  );
+                });
+              })()}
             </div>
 
             {/* Custom tag addition */}
@@ -288,7 +307,7 @@ export const AddReviewPage: React.FC = () => {
           <div className="pt-4 border-t border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-1.5 text-xs text-stone-500">
               <ShieldCheck size={16} className="text-[#27695c] shrink-0" />
-              <span>Reviews are 100% anonymous to prevent retaliation.</span>
+              <span>Reviews are 100% anonymous to prevent retaliation, though this site cannot protect users from tracable information they share on this platform.</span>
             </div>
 
             <button

@@ -33,12 +33,16 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^4.4.1",
-    "drizzle-kit": "^0.31.4",
+    "drizzle-kit": "^0.18.1",
     "eslint": "^9",
     "tailwindcss": "^4",
     "tsx": "^4.20.3",
     "typescript": "^5",
     "vite": "^6.3.5",
     "wrangler": "^4.20.5"
+  },
+  "allowScripts": {
+    "workerd@1.20261006.1": true,
+    "esbuild@0.25.12": true
   }
 }
