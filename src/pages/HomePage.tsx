@@ -45,14 +45,14 @@ export const HomePage: React.FC = () => {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-28 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f1ebe0] text-[#c45b3f] text-xs font-bold tracking-wider uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f1ebe0] text-[#c45b3f] border border-[#dedbd2] shadow-sm text-xs font-bold tracking-wider uppercase">
             <span className="w-2 h-2 rounded-full bg-[#de8d48] animate-pulse" />
             Tenant-powered &amp; 100% Independent
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-serif font-semibold text-stone-900 leading-[1.05] tracking-tight">
+          <h1 className="text-4xl sm:text-6xl font-serif font-extrabold text-stone-900 leading-[1.05] tracking-tight">
             Know who you’re{' '}
             <span className="text-[#27695c] italic">renting from.</span>
           </h1>
@@ -66,25 +66,25 @@ export const HomePage: React.FC = () => {
           {/* Search Bar Form */}
           <form
             onSubmit={handleSearch}
-            className="flex items-center gap-2 p-1.5 bg-white border border-[#dedbd2] rounded-xl shadow-md max-w-lg focus-within:ring-2 focus-within:ring-[#27695c]/20 focus-within:border-[#27695c] transition-all"
+            className="flex items-center gap-2 p-1.5 bg-white border border-[#dedbd2] rounded-2xl shadow-lg max-w-lg focus-within:ring-4 focus-within:ring-[#27695c]/20 focus-within:border-[#27695c] transition-all"
           >
-            <div className="pl-3 text-stone-400">
-              <Search size={20} />
+            <div className="pl-4 text-stone-400">
+              <Search size={22} />
             </div>
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by landlord name, city, or state..."
-              className="flex-1 px-2 py-2 text-sm text-stone-800 bg-transparent outline-none placeholder:text-stone-400"
+              className="flex-1 px-3 py-3.5 text-base text-stone-800 bg-transparent outline-none placeholder:text-stone-400"
               aria-label="Search landlords"
             />
             <button
               type="submit"
-              className="bg-[#27695c] hover:bg-[#1f5449] text-white p-2.5 rounded-lg transition-colors flex items-center justify-center shrink-0"
+              className="bg-[#27695c] hover:bg-[#1f5449] text-white px-5 py-3 rounded-xl transition-all shadow-sm flex items-center justify-center shrink-0 font-medium"
               aria-label="Submit search"
             >
-              <ArrowRight size={18} />
+              Search
             </button>
           </form>
 
@@ -111,14 +111,14 @@ export const HomePage: React.FC = () => {
 
         {/* Hero Visual Card */}
         <div className="lg:col-span-5 relative">
-          <div className="bg-[#e3ece4] rounded-2xl p-6 border border-stone-200 relative overflow-hidden shadow-inner min-h-[380px] flex flex-col justify-between">
+          <div className="bg-[#e3ece4] rounded-2xl p-6 border border-[#dedbd2] relative overflow-hidden shadow-inner min-h-[380px] flex flex-col justify-between">
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#27695c] flex items-center gap-1.5">
                   <MapPin size={14} />
                   <span>OpenStreetMap Visualizer</span>
                 </span>
-                <span className="text-[11px] bg-white text-stone-600 px-2 py-0.5 rounded-full font-medium border border-stone-200">
+                <span className="text-[11px] bg-white text-stone-600 px-2 py-0.5 rounded-full font-medium border border-[#dedbd2]">
                   Interactive
                 </span>
               </div>
@@ -143,7 +143,7 @@ export const HomePage: React.FC = () => {
               )}
             </div>
 
-            <div className="bg-white p-3.5 rounded-xl border border-stone-200 shadow-xs flex items-center justify-between">
+            <div className="bg-white p-3.5 rounded-xl border border-[#dedbd2] shadow-xs flex items-center justify-between">
               <div>
                 <strong className="text-xs font-bold text-stone-800 block">
                   Find properties near you
@@ -288,7 +288,7 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-[#f6f3ec] p-6 rounded-2xl border border-stone-200 space-y-4">
+            <div className="lg:col-span-5 bg-[#f6f3ec] p-6 rounded-2xl border border-[#dedbd2] space-y-4">
               <div className="flex items-center gap-2 text-stone-800 font-bold text-sm">
                 <Heart size={16} className="text-red-500 fill-current" />
                 <span>Built by Marcus Clements</span>

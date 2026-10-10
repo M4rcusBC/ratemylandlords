@@ -25,7 +25,7 @@ export const PrivacyPage: React.FC = () => {
           Privacy Notice &amp; Policies
         </h1>
         <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-          At <strong>Rate My Landlords.info</strong>, we believe housing transparency
+          At <strong>Rate My Landlords.app</strong>, we believe housing transparency
           requires uncompromising privacy protections for tenants.
         </p>
         <p className="text-xs text-stone-400 font-medium">

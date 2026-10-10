@@ -12,7 +12,7 @@ const getApiBase = (): string => {
   if (env?.DEV) {
     // In local development, prefer /api so Vite proxies to the local backend without CORS
     if (env.VITE_DEV_API_URL) return env.VITE_DEV_API_URL;
-    if (env.VITE_API_BASE_URL && !env.VITE_API_BASE_URL.includes('ratemylandlords.info')) {
+    if (env.VITE_API_BASE_URL && !env.VITE_API_BASE_URL.includes('ratemylandlords.app')) {
       return env.VITE_API_BASE_URL;
     }
     return '/api';

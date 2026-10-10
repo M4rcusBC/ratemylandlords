@@ -15,6 +15,11 @@ export const HexclaveAuthModal: React.FC<HexclaveAuthModalProps> = ({
   initialMode = 'signin',
 }) => {
   const [mode, setMode] = useState<'signin' | 'signup'>(initialMode);
+  
+  React.useEffect(() => {
+    setMode(initialMode);
+  }, [initialMode, isOpen]);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');

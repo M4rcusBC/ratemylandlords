@@ -80,3 +80,17 @@ INSERT OR REPLACE INTO reviews (id, landlord_id, rating, comment, tags, created_
   ('rev-rel-mia-1', 'll-related-miami', 5, 'Luxury rental standard in Brickell. Staff is impeccably trained and handles everything with white-glove attention. Hurricane shutters and backup generators are tested regularly.', '["Maintains Property","Respectful","Responsive"]', 1718300000000),
   ('rev-rel-mia-2', 'll-related-miami', 4, 'High-end finishes and appliances. Soundproofing is excellent despite being in the center of the city. Transparent fee structure with no surprise utility markup.', '["Quiet Building","Transparent Fees","Clear Communication"]', 1722200000000);
 
+
+
+-- La Crosse Landlords (Added 2026)
+INSERT OR REPLACE INTO landlords (id, name, city, state, address, latitude, longitude, created_at) VALUES
+  ('ll-lacrosse-1', 'Benson Management', 'La Crosse', 'WI', '320 West Ave N', 43.8124, -91.2485, 1767225600000),
+  ('ll-lacrosse-2', 'Munson Realty, Inc.', 'La Crosse', 'WI', '1400 Pine Street', 43.8112, -91.2401, 1767312000000),
+  ('ll-lacrosse-3', 'PMC Management Group', 'La Crosse', 'WI', '525 Main Street', 43.8138, -91.2519, 1767398400000),
+  ('ll-lacrosse-4', 'River City Rentals', 'La Crosse', 'WI', '1522 Bainbridge Street', 43.8291, -91.2554, 1767484800000),
+  ('ll-lacrosse-5', 'RPI Management', 'La Crosse', 'WI', '1422 Rose St', 43.8267, -91.252, 1767571200000),
+  ('ll-lacrosse-6', 'Three Sixty Real Estate Solutions', 'La Crosse', 'WI', '1231 Hagar St', 43.8234, -91.2501, 1767657600000),
+  ('ll-lacrosse-7', 'WEC Rentals', 'La Crosse', 'WI', '3815 Mormon Coulee Rd, Suite 105', 43.7845, -91.2268, 1767744000000),
+  ('ll-lacrosse-8', 'Great River Property Management', 'La Crosse', 'WI', '205 5th Avenue South #324', 43.8129, -91.2523, 1767830400000),
+  ('ll-lacrosse-9', 'ReLax Property Management Group', 'La Crosse', 'WI', '917 4th St S, Suite 101', 43.8051, -91.2514, 1767916800000),
+  ('ll-lacrosse-10', 'Unwind Property Management LLC', 'La Crosse', 'WI', '4445 Mormon Coulee Rd', 43.7748, -91.2225, 1768003200000);

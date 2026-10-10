@@ -35,7 +35,7 @@ export const Navbar: React.FC = () => {
               <Building2 size={18} />
             </div>
             <span>
-              Rate My <em className="not-italic text-[#c45b3f]">Landlords</em><span className="text-[#27695c] text-xs font-semibold ml-0.5">.info</span>
+              Rate My <em className="not-italic text-[#c45b3f]">Landlords</em><span className="text-[#27695c] text-xs font-semibold ml-0.5">.app</span>
             </span>
           </Link>
 

@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-stone-200">
           <div>
             <span className="font-bold text-base text-[#202622]">
-              Rate My <em className="not-italic text-[#c45b3f]">Landlords</em><span className="text-[#27695c] text-xs font-semibold ml-0.5">.info</span>
+              Rate My <em className="not-italic text-[#c45b3f]">Landlords</em><span className="text-[#27695c] text-xs font-semibold ml-0.5">.app</span>
             </span>
             <p className="text-xs text-stone-500 mt-1 max-w-sm">
               An independent, tenant-driven platform built to bring transparency
@@ -38,6 +38,15 @@ export const Footer: React.FC = () => {
               <Cookie size={13} className="text-[#27695c]" />
               <span>Cookie Settings</span>
             </button>
+            <a
+              href="https://buymeacoffee.com/marcusclements"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-stone-900 transition-colors flex items-center gap-1 text-orange-600 bg-orange-100/50 px-2 py-1 rounded-md"
+            >
+              <Heart size={13} className="fill-orange-600" />
+              <span>Buy Me a Coffee</span>
+            </a>
             <a
               href="https://github.com/M4rcusBC/ratemylandlords"
               target="_blank"
