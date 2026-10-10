@@ -85,13 +85,13 @@ export const Navbar: React.FC = () => {
             ) : (
               <div className="flex items-center gap-2 pl-3 border-l border-[#dedbd2]">
                 <button
-                  onClick={() => window.location.href = app.urls.signIn}
+                  onClick={() => app.redirectToSignIn()}
                   className="text-xs font-semibold text-stone-700 hover:text-[#27695c] px-2 py-1 transition-colors"
                 >
                   Sign In
                 </button>
                 <button
-                  onClick={() => window.location.href = app.urls.signUp}
+                  onClick={() => app.redirectToSignUp()}
                   className="text-xs font-semibold bg-[#27695c] text-white px-3 py-1.5 rounded-md hover:bg-[#1f5449] transition-colors"
                 >
                   Sign Up
@@ -174,13 +174,13 @@ export const Navbar: React.FC = () => {
               ) : (
                 <div className="grid grid-cols-2 gap-2">
                   <button
-                    onClick={() => window.location.href = app.urls.signIn}
+                    onClick={() => app.redirectToSignIn()}
                     className="w-full py-2 border border-stone-300 text-stone-700 text-xs font-semibold rounded-md text-center"
                   >
                     Sign In
                   </button>
                   <button
-                    onClick={() => window.location.href = app.urls.signUp}
+                    onClick={() => app.redirectToSignUp()}
                     className="w-full py-2 bg-[#27695c] text-white text-xs font-semibold rounded-md text-center"
                   >
                     Sign Up
