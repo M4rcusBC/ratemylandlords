@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
               className="hover:text-stone-900 transition-colors flex items-center gap-1 text-orange-600 bg-orange-100/50 px-2 py-1 rounded-md"
             >
               <Heart size={13} className="fill-orange-600" />
-              <span>Buy Me a Coffee</span>
+              <span>Support the Project</span>
             </a>
             <a
               href="https://github.com/M4rcusBC/ratemylandlords"
@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
           <div className="flex items-center text-xs text-stone-600 font-medium">
             <span>Built with</span>
             <Heart size={14} className="text-red-500 fill-current mx-1.5 animate-pulse" />
-            <span>by Marcus Clements. &copy; 2026.</span>
+            <span>by independent tenants. &copy; 2026.</span>
           </div>
         </div>
       </div>

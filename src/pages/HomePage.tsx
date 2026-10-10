@@ -268,14 +268,13 @@ export const HomePage: React.FC = () => {
                 An open platform built with integrity.
               </h2>
               <p className="text-sm text-stone-600 leading-relaxed">
-                Rate My Landlords is an independent community project created by{' '}
-                <strong>Marcus Clements</strong>, an aspiring developer at UW-La Crosse. We believe housing is a basic
+                Rate My Landlords is a completely independent community project. We believe housing is a basic
                 necessity that deserves full transparency.
               </p>
               <p className="text-sm text-stone-600 leading-relaxed">
                 Unlike corporate review directories, property managers cannot pay
                 us to hide bad ratings or manufacture false reviews. Every voice
-                is verified and preserved anonymously.
+                is verified via CAPTCHA and preserved anonymously.
               </p>
               <div className="pt-2">
                 <Link
@@ -291,14 +290,14 @@ export const HomePage: React.FC = () => {
             <div className="lg:col-span-5 bg-[#f6f3ec] p-6 rounded-2xl border border-[#dedbd2] space-y-4">
               <div className="flex items-center gap-2 text-stone-800 font-bold text-sm">
                 <Heart size={16} className="text-red-500 fill-current" />
-                <span>Built by Marcus Clements</span>
+                <span>Built for Renters</span>
               </div>
               <p className="text-xs text-stone-600 leading-relaxed">
-                "As an aspiring developer at UW-La Crosse, I created this platform to give renters peace of mind before signing a lease. Renters deserve to know who holds their security deposit and whether repairs are handled with care."
+                "We created this platform to give renters peace of mind before signing a lease. Renters deserve to know who holds their security deposit and whether repairs are handled with care."
               </p>
               <div className="text-[11px] text-stone-500 font-medium flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#27695c]" />
-                <span>Student-Led Project • UW-La Crosse • Tenant-First Transparency</span>
+                <span>Independent Project • Tenant-First Transparency</span>
               </div>
             </div>
           </div>
