@@ -12,6 +12,7 @@ type Bindings = {
   DB: D1Database;
   VITE_HEXCLAVE_PROJECT_ID?: string;
   HEXCLAVE_SECRET_SERVER_KEY?: string;
+  TURNSTILE_SECRET_KEY?: string;
 };
 
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
@@ -378,6 +379,24 @@ app.get("/landlords", async (c) => {
 
 app.post("/landlords", async (c) => {
   const body = await c.req.json().catch(() => null);
+  
+  const token = body?.turnstileToken;
+  if (!token) {
+    return c.json({ error: "Missing Turnstile token" }, 400);
+  }
+
+  // Verify the token with Cloudflare
+  const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `secret=${c.env.TURNSTILE_SECRET_KEY}&response=${token}`
+  });
+  
+  const verifyData = await verifyRes.json() as any;
+  if (!verifyData.success) {
+    return c.json({ error: "Invalid Turnstile token" }, 400);
+  }
+
   const parsed = landlordInput.safeParse(body);
   if (!parsed.success) {
     return c.json(
@@ -491,6 +510,24 @@ app.get("/landlords/:id", async (c) => {
 
 app.post("/reviews", async (c) => {
   const body = await c.req.json().catch(() => null);
+
+  const token = body?.turnstileToken;
+  if (!token) {
+    return c.json({ error: "Missing Turnstile token" }, 400);
+  }
+
+  // Verify the token with Cloudflare
+  const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `secret=${c.env.TURNSTILE_SECRET_KEY}&response=${token}`
+  });
+  
+  const verifyData = await verifyRes.json() as any;
+  if (!verifyData.success) {
+    return c.json({ error: "Invalid Turnstile token" }, 400);
+  }
+
   const parsed = reviewInput.safeParse(body);
   if (!parsed.success) {
     return c.json(

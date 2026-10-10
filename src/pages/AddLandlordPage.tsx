@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Building2, AlertCircle } from 'lucide-react';
 import { z } from 'zod';
 import { createLandlord } from '../lib/api';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 const landlordSchema = z.object({
   name: z
@@ -31,6 +32,7 @@ export const AddLandlordPage: React.FC = () => {
     state: '',
     address: '',
   });
+  const [turnstileToken, setTurnstileToken] = useState<string>('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -45,6 +47,11 @@ export const AddLandlordPage: React.FC = () => {
     e.preventDefault();
     setError('');
 
+    if (!turnstileToken) {
+      setError('Please complete the security check.');
+      return;
+    }
+
     const validation = landlordSchema.safeParse(formData);
     if (!validation.success) {
       setError(validation.error.issues[0]?.message || 'Invalid form input');
@@ -53,7 +60,7 @@ export const AddLandlordPage: React.FC = () => {
 
     setSubmitting(true);
     try {
-      const created = await createLandlord(validation.data);
+      const created = await createLandlord({ ...validation.data, turnstileToken });
       navigate(`/landlords/${created.id}`);
     } catch (err: unknown) {
       setError(
@@ -181,6 +188,14 @@ export const AddLandlordPage: React.FC = () => {
                 required
               />
             </div>
+          </div>
+
+          <div className="pt-2">
+            <Turnstile
+              siteKey="0x4AAAAAAFTNwrqMMpP1vbVk"
+              onSuccess={(token) => setTurnstileToken(token)}
+              onError={() => setError('Security check failed. Please try again.')}
+            />
           </div>
 
           <div className="pt-4 border-t border-stone-100 flex items-center justify-between">

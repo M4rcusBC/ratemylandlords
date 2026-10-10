@@ -14,6 +14,7 @@ import { z } from 'zod';
 import { fetchLandlordProfile, submitReview } from '../lib/api';
 import { PRESET_REVIEW_TAGS } from '../lib/types';
 import type { LandlordProfile } from '../lib/types';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 const reviewSchema = z.object({
   rating: z
@@ -40,11 +41,17 @@ export const AddReviewPage: React.FC = () => {
   const [comment, setComment] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [customTagInput, setCustomTagInput] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState<string>('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (!id) return;
+
+    if (!turnstileToken) {
+      setError('Please complete the security check.');
+      return;
+    }
     fetchLandlordProfile(id)
       .then((data) => setLandlord(data))
       .catch(() => setLandlord(null))
@@ -72,6 +79,11 @@ export const AddReviewPage: React.FC = () => {
 
     if (!id) return;
 
+    if (!turnstileToken) {
+      setError('Please complete the security check.');
+      return;
+    }
+
     const validation = reviewSchema.safeParse({
       rating,
       comment,
@@ -90,6 +102,7 @@ export const AddReviewPage: React.FC = () => {
         rating: validation.data.rating,
         comment: validation.data.comment,
         tags: validation.data.tags,
+        turnstileToken,
       });
       navigate(`/landlords/${id}`);
     } catch (err: unknown) {
@@ -264,6 +277,14 @@ export const AddReviewPage: React.FC = () => {
           </div>
 
           {/* Anonymity note & submit */}
+          <div className="pt-2">
+            <Turnstile
+              siteKey="0x4AAAAAAFTNwrqMMpP1vbVk"
+              onSuccess={(token) => setTurnstileToken(token)}
+              onError={() => setError('Security check failed. Please try again.')}
+            />
+          </div>
+
           <div className="pt-4 border-t border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-1.5 text-xs text-stone-500">
               <ShieldCheck size={16} className="text-[#27695c] shrink-0" />
