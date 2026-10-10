@@ -2,12 +2,13 @@ name = "ratemylandlords"
 compatibility_date = "2026-09-20"
 pages_build_output_dir = "dist"
 
+[vars]
+VITE_HEXCLAVE_PROJECT_ID = "788b7ed1-a5a1-4bad-a5b5-e3f82ea9cbd4"
+VITE_HEXCLAVE_PUBLISHABLE_CLIENT_KEY = "pck_8tgv62h4wxztvndg0cnn8zgn1ycgygpn5ppd4w6wc07sr"
+VITE_HEXCLAVE_API_URL = "https://api.hexclave.com"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "ratemylandlords"
 database_id = "ebb0ff4c-e417-4608-b211-a4fcab4bd828"
 migrations_dir = "db/migrations"
-
-VITE_HEXCLAVE_PROJECT_ID = "788b7ed1-a5a1-4bad-a5b5-e3f82ea9cbd4"
-VITE_HEXCLAVE_PUBLISHABLE_CLIENT_KEY = "pck_8tgv62h4wxztvndg0cnn8zgn1ycgygpn5ppd4w6wc07sr"
-VITE_HEXCLAVE_API_URL = "https://api.hexclave.com"
