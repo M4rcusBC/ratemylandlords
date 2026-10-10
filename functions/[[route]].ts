@@ -10,8 +10,6 @@ import { landlords, reviews } from "../db/schema";
 
 type Bindings = {
   DB: D1Database;
-  VITE_HEXCLAVE_PROJECT_ID?: string;
-  HEXCLAVE_SECRET_SERVER_KEY?: string;
   TURNSTILE_SECRET_KEY?: string;
 };
 

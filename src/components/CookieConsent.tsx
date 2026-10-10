@@ -50,7 +50,6 @@ export const CookieConsent: React.FC = () => {
       if (existing && existing !== JSON.stringify(preferences)) {
         window.location.reload();
       } else if (!existing) {
-        // If it's the first time setting it, we should also reload so hexclave respects the new setting if it was initialized differently.
         window.location.reload();
       }
     } catch (e) {
@@ -115,8 +114,7 @@ export const CookieConsent: React.FC = () => {
         {/* Body Text */}
         <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
           We use strictly necessary cookies and local storage to keep your session
-          secure, preserve your preferences, and maintain sign-in state. Your tenant
-          reviews are always <strong>100% anonymous</strong>.
+          secure and preserve your preferences. Your tenant reviews are always <strong>100% anonymous</strong>.
         </p>
 
         {/* Expandable Preferences */}
@@ -126,7 +124,7 @@ export const CookieConsent: React.FC = () => {
               <div className="space-y-0.5">
                 <span className="font-bold text-stone-800 flex items-center gap-1.5">
                   <ShieldCheck size={14} className="text-[#27695c]" />
-                  Essential &amp; Sign-In (Always Active)
+                  Essential Cookies (Always Active)
                 </span>
                 <p className="text-[11px] text-stone-500">
                   Required for core functionality, account security, and session management.

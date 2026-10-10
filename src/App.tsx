@@ -1,7 +1,5 @@
 import React, { useEffect, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { HexclaveProvider, HexclaveTheme } from '@hexclave/react';
-import { hexclaveClientApp } from './hexclave/client';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
@@ -28,30 +26,25 @@ function ScrollToTop() {
 export default function App() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#f6f3ec]">Loading...</div>}>
-      <HexclaveProvider app={hexclaveClientApp}>
-        <HexclaveTheme>
-          <div className="min-h-screen flex flex-col bg-[#f6f3ec] text-[#202622] font-sans antialiased selection:bg-[#27695c]/20">
-            <ScrollToTop />
-            <Navbar />
-            <div className="flex-1">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/landlords" element={<DirectoryPage />} />
-                <Route path="/landlords/new" element={<AddLandlordPage />} />
-                <Route path="/landlords/:id" element={<LandlordProfilePage />} />
-                <Route path="/landlords/:id/review" element={<AddReviewPage />} />
-                <Route path="/how-it-works" element={<HowItWorksPage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/privacy" element={<PrivacyPage />} />
-                <Route path="*" element={<HomePage />} />
-              </Routes>
-            </div>
-            <Footer />
-            <CookieConsent />
-          </div>
-        </HexclaveTheme>
-      </HexclaveProvider>
+      <div className="min-h-screen flex flex-col bg-[#f6f3ec] text-[#202622] font-sans antialiased selection:bg-[#27695c]/20">
+        <ScrollToTop />
+        <Navbar />
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/landlords" element={<DirectoryPage />} />
+            <Route path="/landlords/new" element={<AddLandlordPage />} />
+            <Route path="/landlords/:id" element={<LandlordProfilePage />} />
+            <Route path="/landlords/:id/review" element={<AddReviewPage />} />
+            <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </div>
+        <Footer />
+        <CookieConsent />
+      </div>
     </Suspense>
   );
 }
-

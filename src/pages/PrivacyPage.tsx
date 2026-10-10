@@ -29,7 +29,7 @@ export const PrivacyPage: React.FC = () => {
           requires uncompromising privacy protections for tenants.
         </p>
         <p className="text-xs text-stone-400 font-medium">
-          Effective Date: September 2026 &bull; Maintained by Marcus Clements
+          Effective Date: September 2026 &bull; Maintained Independently
         </p>
       </div>
 
@@ -59,13 +59,6 @@ export const PrivacyPage: React.FC = () => {
             <li className="flex items-start gap-2">
               <CheckCircle2 size={16} className="text-[#27695c] shrink-0 mt-0.5" />
               <span>
-                <strong>Zero selling of user data:</strong> We do not sell, rent, or monetize
-                renter data to property management companies, data brokers, or advertisers.
-              </span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle2 size={16} className="text-[#27695c] shrink-0 mt-0.5" />
-              <span>
                 <strong>No pay-to-remove:</strong> Landlords cannot pay to unmask, alter,
                 or delete genuine tenant reviews.
               </span>
@@ -73,42 +66,32 @@ export const PrivacyPage: React.FC = () => {
           </ul>
         </div>
 
-        {/* User Authentication Notice */}
+        {/* Advertising & Third-Party Cookies */}
         <section className="bg-white rounded-2xl border border-[#dedbd2] p-8 shadow-xs space-y-4">
           <div className="flex items-center gap-3 text-[#27695c]">
-            <Lock size={22} />
+            <Cookie size={22} />
             <h2 className="text-xl font-serif font-bold text-stone-900">
-              User Authentication &amp; Account Notice
+              Advertising &amp; Cookies
             </h2>
           </div>
           <p className="text-sm text-stone-700 leading-relaxed">
-            Rate My Landlords uses Hexclave authentication for secure accounts,
-            allowing renters to manage their review history and saved landlords.
+            To keep this independent project free and running, we use Google AdSense to display advertisements.
+            Third party vendors, including Google, use cookies to serve ads based on your prior visits to this website or other websites.
           </p>
           <div className="space-y-3 text-sm text-stone-600">
             <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-2">
               <h3 className="font-semibold text-stone-900 text-xs uppercase tracking-wider">
-                What information is processed:
+                Google AdSense &amp; DoubleClick:
               </h3>
               <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-stone-700">
                 <li>
-                  <strong>Email Address:</strong> Required to verify account ownership and
-                  prevent automated review spam.
+                  Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet.
                 </li>
                 <li>
-                  <strong>Display Name:</strong> A chosen pseudonym or first name for your
-                  profile.
-                </li>
-                <li>
-                  <strong>Cryptographic Session Tokens:</strong> Secure session tokens issued
-                  to maintain your signed-in state without storing plain-text passwords.
+                  You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-[#27695c] underline font-semibold">Ads Settings</a>.
                 </li>
               </ul>
             </div>
-            <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
-              <strong>Tenant Protection:</strong> Authentication ensures platform integrity
-              while guaranteeing that public reviews remain strictly anonymous.
-            </p>
           </div>
         </section>
 
@@ -117,29 +100,15 @@ export const PrivacyPage: React.FC = () => {
           <div className="flex items-center gap-3 text-[#27695c]">
             <Cookie size={22} />
             <h2 className="text-xl font-serif font-bold text-stone-900">
-              Cookie &amp; Local Storage Policy
+              Local Storage Policy
             </h2>
           </div>
           <p className="text-sm text-stone-700 leading-relaxed">
             We prioritize lightweight, privacy-respecting client storage. Here is exactly
-            what is saved in your browser:
+            what is saved in your browser directly by us:
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="font-bold text-xs text-stone-900">
-                  user_session
-                </span>
-                <span className="text-[10px] bg-stone-200 px-2 py-0.5 rounded font-bold text-stone-600">
-                  Strictly Necessary
-                </span>
-              </div>
-              <p className="text-xs text-stone-600">
-                Stores your client session profile and token if you choose to sign in.
-              </p>
-            </div>
-
+          <div className="grid grid-cols-1 gap-4 pt-2">
             <div className="p-4 rounded-xl bg-stone-50 border border-stone-200 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-xs text-stone-900">

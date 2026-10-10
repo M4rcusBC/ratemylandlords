@@ -97,7 +97,7 @@ export const AboutPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Creator Section */}
+        {/* Project Independence Section */}
         <section className="bg-[#202622] text-white rounded-2xl p-8 sm:p-10 shadow-lg space-y-5">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-800 text-[#de8d48] text-xs font-semibold uppercase tracking-wider">
             <Heart size={14} className="fill-current text-red-400" />
@@ -105,12 +105,11 @@ export const AboutPage: React.FC = () => {
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-serif font-bold">
-            Built by Marcus Clements
+            Built by and for Renters
           </h2>
 
           <p className="text-stone-300 text-sm leading-relaxed max-w-2xl">
-            Rate My Landlords is designed and developed by <strong>Marcus Clements</strong>,
-            an aspiring developer at UW-La Crosse. The goal is simple: replace anxiety and opacity in renting with open,
+            Rate My Landlords is a completely independent community tool. The goal is simple: replace anxiety and opacity in renting with open,
             independent community data that benefits responsible renters and
             accountable property owners alike.
           </p>

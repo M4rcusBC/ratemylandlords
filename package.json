@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx @hexclave/cli dev --config-file ./hexclave.config.ts -- npm run dev:inner",
-    "dev:inner": "vite",
-    "dev:api": "npx @hexclave/cli dev --config-file ./hexclave.config.ts -- npm run dev:api:inner",
-    "dev:api:inner": "npm run build && wrangler pages dev",
+    "dev": "vite",
+    "dev:api": "npm run build && wrangler pages dev",
     "build": "tsc -b && vite build",
     "preview": "npm run build && wrangler pages dev",
     "lint": "tsc -b",
@@ -15,8 +13,6 @@
     "db:seed": "tsx scripts/seed-d1.ts"
   },
   "dependencies": {
-    "@hexclave/js": "^1.0.125",
-    "@hexclave/react": "^1.0.125",
     "@hookform/resolvers": "^5.9.1",
     "@marsidev/react-turnstile": "^1.6.1",
     "drizzle-orm": "^0.45.4",
