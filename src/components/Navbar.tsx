@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Building2, Plus, Menu, X, LogOut, UserCircle } from 'lucide-react';
-import { useHexclaveAuth } from '../lib/hexclave-auth';
-import { HexclaveAuthModal } from './HexclaveAuthModal';
+import { useHexclaveApp, useUser } from '@hexclave/react';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [authModalMode, setAuthModalMode] = useState<'signin' | 'signup'>('signin');
   const location = useLocation();
 
-  const { user, signOut } = useHexclaveAuth();
+  const app = useHexclaveApp();
+  const user = useUser();
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
-
-  const openAuth = (mode: 'signin' | 'signup') => {
-    setAuthModalMode(mode);
-    setAuthModalOpen(true);
-    closeMobileMenu();
-  };
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -83,7 +75,7 @@ export const Navbar: React.FC = () => {
                   </span>
                 </div>
                 <button
-                  onClick={() => signOut()}
+                  onClick={() => app.signOut()}
                   className="p-1.5 text-stone-400 hover:text-stone-700 hover:bg-stone-200/50 rounded-md transition-colors"
                   title="Sign out"
                 >
@@ -93,13 +85,13 @@ export const Navbar: React.FC = () => {
             ) : (
               <div className="flex items-center gap-2 pl-3 border-l border-[#dedbd2]">
                 <button
-                  onClick={() => openAuth('signin')}
+                  onClick={() => window.location.href = app.urls.signIn}
                   className="text-xs font-semibold text-stone-700 hover:text-[#27695c] px-2 py-1 transition-colors"
                 >
                   Sign In
                 </button>
                 <button
-                  onClick={() => openAuth('signup')}
+                  onClick={() => window.location.href = app.urls.signUp}
                   className="text-xs font-semibold bg-[#27695c] text-white px-3 py-1.5 rounded-md hover:bg-[#1f5449] transition-colors"
                 >
                   Sign Up
@@ -171,7 +163,7 @@ export const Navbar: React.FC = () => {
                   </div>
                   <button
                     onClick={() => {
-                      signOut();
+                      app.signOut();
                       closeMobileMenu();
                     }}
                     className="inline-flex items-center gap-1 text-red-600 font-semibold"
@@ -182,13 +174,13 @@ export const Navbar: React.FC = () => {
               ) : (
                 <div className="grid grid-cols-2 gap-2">
                   <button
-                    onClick={() => openAuth('signin')}
+                    onClick={() => window.location.href = app.urls.signIn}
                     className="w-full py-2 border border-stone-300 text-stone-700 text-xs font-semibold rounded-md text-center"
                   >
                     Sign In
                   </button>
                   <button
-                    onClick={() => openAuth('signup')}
+                    onClick={() => window.location.href = app.urls.signUp}
                     className="w-full py-2 bg-[#27695c] text-white text-xs font-semibold rounded-md text-center"
                   >
                     Sign Up
@@ -199,13 +191,6 @@ export const Navbar: React.FC = () => {
           </div>
         )}
       </header>
-
-      <HexclaveAuthModal
-        isOpen={authModalOpen}
-        onClose={() => setAuthModalOpen(false)}
-        initialMode={authModalMode}
-      />
     </>
   );
 };
-

@@ -20,22 +20,6 @@ export const reviews = sqliteTable('reviews', {
   createdAt: integer('created_at').notNull(),
 })
 
-export const users = sqliteTable('users', {
-  id: text('id').primaryKey(),
-  email: text('email').notNull().unique(),
-  displayName: text('display_name').notNull(),
-  passwordHash: text('password_hash'),
-  hexclaveUserId: text('hexclave_user_id'),
-  createdAt: integer('created_at').notNull(),
-})
-
-export const sessions = sqliteTable('sessions', {
-  id: text('id').primaryKey(),
-  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
-  token: text('token').notNull().unique(),
-  expiresAt: integer('expires_at').notNull(),
-  createdAt: integer('created_at').notNull(),
-})
 
 export const contactMessages = sqliteTable('contact_messages', {
   id: text('id').primaryKey(),
@@ -51,9 +35,5 @@ export type Landlord = typeof landlords.$inferSelect
 export type NewLandlord = typeof landlords.$inferInsert
 export type Review = typeof reviews.$inferSelect
 export type NewReview = typeof reviews.$inferInsert
-export type User = typeof users.$inferSelect
-export type NewUser = typeof users.$inferInsert
-export type Session = typeof sessions.$inferSelect
-export type NewSession = typeof sessions.$inferInsert
 export type ContactMessage = typeof contactMessages.$inferSelect
 export type NewContactMessage = typeof contactMessages.$inferInsert
