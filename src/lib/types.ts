@@ -35,6 +35,7 @@ export interface CreateLandlordInput {
   address?: string;
   latitude?: number;
   longitude?: number;
+  turnstileToken?: string;
 }
 
 export interface CreateReviewInput {
@@ -42,6 +43,7 @@ export interface CreateReviewInput {
   rating: number;
   comment: string;
   tags: string[];
+  turnstileToken?: string;
 }
 
 export const PRESET_REVIEW_TAGS = [
