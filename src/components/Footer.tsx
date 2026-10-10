@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
               <span>Cookie Settings</span>
             </button>
             <a
-              href="https://buymeacoffee.com/marcusclements"
+              href="https://buymeacoffee.com/marcusbc"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-stone-900 transition-colors flex items-center gap-1 text-orange-600 bg-orange-100/50 px-2 py-1 rounded-md"
