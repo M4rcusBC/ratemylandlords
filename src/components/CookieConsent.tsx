@@ -45,7 +45,14 @@ export const CookieConsent: React.FC = () => {
 
   const saveConsent = (preferences: CookiePreferences) => {
     try {
+      const existing = localStorage.getItem(STORAGE_KEY);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(preferences));
+      if (existing && existing !== JSON.stringify(preferences)) {
+        window.location.reload();
+      } else if (!existing) {
+        // If it's the first time setting it, we should also reload so hexclave respects the new setting if it was initialized differently.
+        window.location.reload();
+      }
     } catch (e) {
       console.warn('Could not save cookie preferences', e);
     }
