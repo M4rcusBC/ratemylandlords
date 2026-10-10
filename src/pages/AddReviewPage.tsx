@@ -313,7 +313,7 @@ export const AddReviewPage: React.FC = () => {
             <button
               type="submit"
               disabled={submitting || rating === 0 || comment.trim().length < 10}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#202622] hover:bg-[#27695c] text-white text-xs font-semibold rounded-xl transition-colors shadow-xs disabled:opacity-50"
+              className="shrink-0 whitespace-nowrap inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#202622] hover:bg-[#27695c] text-white text-xs font-semibold rounded-xl transition-colors shadow-xs disabled:opacity-50"
             >
               <span>{submitting ? 'Publishing Review...' : 'Publish Anonymous Review'}</span>
               <ArrowRight size={15} />

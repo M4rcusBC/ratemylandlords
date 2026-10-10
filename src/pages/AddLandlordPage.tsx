@@ -205,7 +205,7 @@ export const AddLandlordPage: React.FC = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#202622] hover:bg-[#27695c] text-white text-xs font-semibold rounded-xl transition-colors shadow-xs disabled:opacity-50"
+              className="shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-6 py-3 bg-[#202622] hover:bg-[#27695c] text-white text-xs font-semibold rounded-xl transition-colors shadow-xs disabled:opacity-50"
             >
               <span>{submitting ? 'Creating Profile...' : 'Add Landlord'}</span>
               <ArrowRight size={15} />
