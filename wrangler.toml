@@ -1,0 +1,8 @@
+name = "ratemylandlords"
+compatibility_date = "2026-09-20"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ratemylandlords"
+database_id = "replace-with-your-d1-database-id"
+migrations_dir = "db/migrations"

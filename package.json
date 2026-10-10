@@ -3,35 +3,41 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "seed": "tsx prisma/seed.ts"
+    "dev": "wrangler pages dev -- npm run start:vite",
+    "start:vite": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "npm run build && wrangler pages dev dist",
+    "lint": "tsc -b",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "wrangler d1 migrations apply ratemylandlords --local",
+    "db:seed": "tsx scripts/seed-d1.ts"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.1.1",
-    "@prisma/client": "^6.11.1",
-    "@stackframe/react": "^2.8.19",
-    "@stackframe/stack": "^2.8.19",
+    "@hookform/resolvers": "^5.9.1",
+    "drizzle-orm": "^0.45.3",
+    "hono": "^4.7.11",
+    "leaflet": "^1.9.4",
     "lucide-react": "^0.525.0",
-    "next": "15.3.5",
-    "prisma": "^6.11.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-hook-form": "^7.60.0",
-    "zod": "^4.0.3"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-hook-form": "^7.88.0",
+    "react-router-dom": "^7.6.2",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@cloudflare/workers-types": "^5.20260923.1",
+    "@tailwindcss/vite": "^4",
+    "@types/leaflet": "^1.9.22",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "drizzle-kit": "^0.31.4",
     "eslint": "^9",
-    "eslint-config-next": "15.3.5",
     "tailwindcss": "^4",
     "tsx": "^4.20.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^6.3.5",
+    "wrangler": "^4.20.5"
   }
 }
