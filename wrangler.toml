@@ -4,5 +4,5 @@ compatibility_date = "2026-09-20"
 [[d1_databases]]
 binding = "DB"
 database_name = "ratemylandlords"
-database_id = "replace-with-your-d1-database-id"
+database_id = "ebb0ff4c-e417-4608-b211-a4fcab4bd828"
 migrations_dir = "db/migrations"
