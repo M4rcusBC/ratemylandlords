@@ -10,10 +10,8 @@ import { landlords, reviews, users, sessions } from "../db/schema";
 
 type Bindings = {
   DB: D1Database;
-  HEXCLAVE_API_URL?: string;
-  HEXCLAVE_PROJECT_ID?: string;
-  HEXCLAVE_PUBLISHABLE_KEY?: string;
-  HEXCLAVE_SECRET_KEY?: string;
+  VITE_HEXCLAVE_PROJECT_ID?: string;
+  HEXCLAVE_SECRET_SERVER_KEY?: string;
 };
 
 const app = new Hono<{ Bindings: Bindings }>().basePath("/api");
@@ -118,20 +116,17 @@ app.post("/auth/sign-up", async (c) => {
     return c.json({ error: "Password must be at least 6 characters" }, 400);
   }
 
-  const hexclaveUrl = c.env.HEXCLAVE_API_URL || "https://api.hexclave.com";
-  const hexclaveProjectId = c.env.HEXCLAVE_PROJECT_ID || "";
-  const hexclavePub = c.env.HEXCLAVE_PUBLISHABLE_KEY || "";
-  const hexclaveSec = c.env.HEXCLAVE_SECRET_KEY || "";
+  const hexclaveProjectId = c.env.VITE_HEXCLAVE_PROJECT_ID || "";
+  const hexclaveSec = c.env.HEXCLAVE_SECRET_SERVER_KEY || "";
 
   let hexclaveUserId: string | null = null;
   if (hexclaveProjectId) {
     try {
-      const res = await fetch(`${hexclaveUrl}/api/v1/auth/password/sign-up`, {
+      const res = await fetch(`https://api.hexclave.com/api/v1/auth/password/sign-up`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "X-Stack-Project-Id": hexclaveProjectId,
-          "X-Stack-Publishable-Client-Key": hexclavePub,
           ...(hexclaveSec ? { "X-Stack-Secret-Server-Key": hexclaveSec } : {}),
         },
         body: JSON.stringify({ email, password, display_name: displayName }),
@@ -204,20 +199,19 @@ app.post("/auth/sign-in", async (c) => {
     return c.json({ error: "Email and password are required" }, 400);
   }
 
-  const hexclaveUrl = c.env.HEXCLAVE_API_URL || "https://api.hexclave.com";
-  const hexclaveProjectId = c.env.HEXCLAVE_PROJECT_ID || "";
-  const hexclavePub = c.env.HEXCLAVE_PUBLISHABLE_KEY || "";
+  const hexclaveProjectId = c.env.VITE_HEXCLAVE_PROJECT_ID || "";
+  const hexclaveSec = c.env.HEXCLAVE_SECRET_SERVER_KEY || "";
 
   let authenticatedUser: { id: string; email: string; displayName: string } | null = null;
 
   if (hexclaveProjectId) {
     try {
-      const res = await fetch(`${hexclaveUrl}/api/v1/auth/password/sign-in`, {
+      const res = await fetch(`https://api.hexclave.com/api/v1/auth/password/sign-in`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "X-Stack-Project-Id": hexclaveProjectId,
-          "X-Stack-Publishable-Client-Key": hexclavePub,
+          ...(hexclaveSec ? { "X-Stack-Secret-Server-Key": hexclaveSec } : {}),
         },
         body: JSON.stringify({ email, password }),
       });
